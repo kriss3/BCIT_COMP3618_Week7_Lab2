@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(627, 384);
             this.Name = "frmMain";
             this.Text = "BCIT COMP3618 Week7 Lab2 - Krzysztof Szczurowski";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
         }

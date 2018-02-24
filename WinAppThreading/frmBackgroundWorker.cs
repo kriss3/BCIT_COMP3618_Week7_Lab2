@@ -1,30 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BLL.Logic;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLL.Logic;
 
 namespace WinAppThreading
 {
     public partial class frmBackgroundWorker : Form
     {
-        public AppLogic Helper { get; private set; }
+        #region Fields
+
         DateTime startDateTime = DateTime.Now;
+
+        #endregion
+
+        #region Operataions
 
         public frmBackgroundWorker()
         {
             InitializeComponent();
-            Helper = new AppLogic();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show($"{Helper.GetTester("Kris")}", "Title", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void frmBackgroundWorker_Activated(object sender, EventArgs e)
@@ -33,6 +27,7 @@ namespace WinAppThreading
             timer.Start();
         }
 
+        //The DoWork event occurs when the RunWorkersAsync method is called.  
         private void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             DataTable dt;
@@ -42,6 +37,7 @@ namespace WinAppThreading
             toolStripLabel.Text = "Please, wait ...";
         }
 
+        //the RunWorkerCompleted event occurs when the background operation has completed
         private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             toolStripProgressBar.Value = 100;
@@ -65,6 +61,8 @@ namespace WinAppThreading
             toolStripProgressBar.PerformStep();
         }
 
+        #endregion Operations
+        
         #region Private methods
 
         private DataTable GetDataTable(int Rows)
@@ -73,7 +71,6 @@ namespace WinAppThreading
             return (getData.GetDataSetCities(Rows).Tables[0]);
         }
 
-        #endregion
-
+        #endregion Private methods
     }
 }

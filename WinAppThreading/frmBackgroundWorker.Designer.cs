@@ -102,7 +102,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "COMP3618 Week7 Lab2 Krzysztof Szczurowski";
             this.Activated += new System.EventHandler(this.frmBackgroundWorker_Activated);
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).EndInit();
